@@ -15,18 +15,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> works = [data, data, data, data, data];
+  List<Map<String, dynamic>> works = [data];
 
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   SnDataBase.getProjects().then((value) {
-  //     setState(() {
-  //       works = value;
-  //     });
-  //   });
-  // }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    SnDataBase.getProjects().then((value) {
+      setState(() {
+        works = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +60,9 @@ class _HomePageState extends State<HomePage> {
                         builder: (context) => const CreatePage(),
                       ),
                     );
-                    if(get) {
-                      List<Map<String, dynamic>> data = await SnDataBase.getProjects();
+                    if (get) {
+                      List<Map<String, dynamic>> data =
+                          await SnDataBase.getProjects();
                       setState(() {
                         works = data;
                       });
@@ -76,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                     width: width(context),
                     alignment: .center,
                     child: Icon(
-                      Icons.add_sharp,
+                      Icons.auto_awesome_rounded,
                       size: 50,
                       color: Theme.of(context).colorScheme.surface,
                     ),

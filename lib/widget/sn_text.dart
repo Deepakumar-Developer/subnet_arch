@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:subnet_arch/function/app_function.dart';
 
 class SnTitle extends StatelessWidget {
   final String text;
@@ -7,13 +8,25 @@ class SnTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: GoogleFonts.afacad(
-        fontSize: 24,
-        fontWeight: FontWeight.w800,
-        color: Theme.of(context).colorScheme.primary,
-        letterSpacing: 1,
+    List<Color> color = [Color(0xffCF4055),Color(0xff883ACC),Color(0xffF6B756),Color(0xff77CACB),];
+    return SizedBox(
+      height: 30,
+      width: text.length * 12.5,
+      child: ListView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: text.length,
+        itemBuilder: (context, index) {
+          return Text(
+            text[index],
+            style: GoogleFonts.afacad(
+              fontSize: 24,
+              fontWeight: FontWeight.w800,
+              color: color[index % color.length],
+              letterSpacing: 1,
+            ),
+          );
+        }
       ),
     );
   }

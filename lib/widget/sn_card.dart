@@ -63,3 +63,24 @@ class _WorkCardState extends State<WorkCard> {
     );
   }
 }
+
+class StatusError extends StatelessWidget {
+  const StatusError({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 12,
+      mainAxisAlignment: .center,
+      crossAxisAlignment: .center,
+      children: [
+        SvgPicture.asset(
+          'assets/address.svg',
+          width: width(context) * 0.4,
+        ),
+        SnBodyText('Some thing went wrong!'),
+      ],
+    );
+  }
+}
+
